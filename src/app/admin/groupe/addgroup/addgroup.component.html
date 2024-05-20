@@ -1,0 +1,21 @@
+
+<h3 class="text-center mt-5 text-italic">Add Group</h3>
+<div class="card shadow container p-3 mt-5">
+    <!-- groupe-form.component.html -->
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" required>
+    </div>
+  
+    <div class="mb-3">
+      <label for="numero" class="form-label">Numero</label>
+      <input type="text" class="form-control" id="numero" [(ngModel)]="numero" name="numero" required>
+    </div>
+  
+   
+  
+    <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+  
+  
+</div>

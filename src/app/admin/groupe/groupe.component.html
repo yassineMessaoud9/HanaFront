@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <h2>Group List</h2>
+    <a class="btn btn-primary m-3" href="/admin/addgroup">Add Group</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Number</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example Row -->
+            <tr *ngFor="let i of listGroup">
+                <td>{{i.name}}</td>
+                <td>{{i.numero}}</td>
+                <td>
+                    <button class="btn btn-primary"[disabled]="true">Edit</button>
+                    <button class="btn btn-danger"[disabled]="true">Delete</button>
+                </td>
+               
+            </tr>
+            <!-- More rows can be dynamically added here -->
+        </tbody>
+    </table>
+</div>
