@@ -49,7 +49,7 @@ export class EditgroupeComponent {
     let body = {
       name: this.name,
       numero: this.numero,
-      zone: this.selectedZone,
+      zones: this.selectedZone,
     };
     this.as.updateGroup(this.id, body).subscribe((res) => {
       console.log(res);

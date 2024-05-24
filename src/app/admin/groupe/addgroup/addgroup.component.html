@@ -21,7 +21,7 @@
       
         <div class="mb-3">
             <label for="filiere" class="form-label">Zone</label>
-            <select [(ngModel)]="selectedZone" class="form-control" name="selectedZone" required #zoneField="ngModel">
+            <select [(ngModel)]="selectedZone" class="form-control" name="selectedZone" required #zoneField="ngModel" multiple="multiple">
                 <option value="" disabled selected>Select Zone</option>
                 <option *ngFor="let filiere of zone" [value]="filiere._id">{{filiere.name}}</option>
             </select>

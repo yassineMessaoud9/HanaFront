@@ -44,6 +44,7 @@
         name="selectedZone"
         required
         #zoneField="ngModel"
+        multiple="multiple"
       >
         <option value="" disabled selected>Select Zone</option>
         <option *ngFor="let filiere of zone" [value]="filiere._id">

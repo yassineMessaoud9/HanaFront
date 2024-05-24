@@ -34,7 +34,7 @@ selectedZone: any;
     let body = {
       name: this.name,
       numero: this.numero,
-      zone: this.selectedZone,
+      zones: this.selectedZone,
     };
     console.log(body);
     this.as.addGroup(body).subscribe((ers) => {
