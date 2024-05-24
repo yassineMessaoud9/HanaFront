@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <h2>Group List</h2>
+    <a class="btn btn-primary m-3" href="/admin/addzones">Add Zone</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Number</th>
+                <th scope="col">Image QR</th>
+                <th scope="col">Action</th>
+                <th scope="col">Download QR</th> <!-- Added column for download -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example Row -->
+            <tr *ngFor="let i of data">
+                <td>{{ i.name }}</td>
+                <td>{{ i.numposition }}</td>
+                <td><img src="{{ i.pathQr }}"></td>
+                <td>
+                    <button class="btn btn-primary m-2" [routerLink]="['/admin', 'zones', i._id]">Edit</button>
+                    <button class="btn btn-danger m-2" (click)="deleteZone(i._id)">Delete</button>
+                </td>
+                <td>
+                    <!-- Download Link -->
+                    <a href="{{ i.pathQr }}" download="{{ i.name }}-QR.png" class="btn btn-success m-2">Download</a>
+                </td>
+            </tr>
+            <!-- More rows can be dynamically added here -->
+        </tbody>
+    </table>
+</div>

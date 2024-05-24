@@ -6,7 +6,11 @@
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Number</th>
+                <th scope="col">Zone</th>
+                <th scope="col">Qr Image</th>
                 <th scope="col">Action</th>
+                <th scope="col">Download QR</th> <!-- Added column for download -->
+
             </tr>
         </thead>
         <tbody>
@@ -14,11 +18,17 @@
             <tr *ngFor="let i of listGroup">
                 <td>{{i.name}}</td>
                 <td>{{i.numero}}</td>
+                <td>{{i.zone.name}}</td>
                 <td>
-                    <button class="btn btn-primary"[disabled]="true">Edit</button>
-                    <button class="btn btn-danger"[disabled]="true">Delete</button>
+                    <img src="{{i.qrPhoto}}" alt="Qr Image" width="100" height="100">
+                <td>
+                    <button class="btn btn-primary m-2" [routerLink]="['/admin', 'groups', i._id]">Edit</button>
+                    <button class="btn btn-danger m-2" (click)="deleteGroup(i._id)">Delete</button>
                 </td>
-               
+                <td>
+                    <!-- Download Link -->
+                    <a href="{{ i.qrPhoto }}" download="{{ i.name }}-QR.png" class="btn btn-success m-2">Download</a>
+                </td>
             </tr>
             <!-- More rows can be dynamically added here -->
         </tbody>

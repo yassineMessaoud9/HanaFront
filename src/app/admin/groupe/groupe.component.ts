@@ -23,6 +23,20 @@ export class GroupeComponent implements OnInit {
       }
     )
   }
+  deleteGroup(id:any){
+   //show window confirm
+    if(confirm('Are you sure you want to delete this group?')){
+      this.ss.deleteGroup(id).subscribe(
+        (res:any)=>{
+          console.log(res);
+          this.getGroups();
+        },
+        (err:any)=>{
+          console.log(err);
+        }
+      )
+    }
+  }
   ngOnInit(): void {
     this.getGroups();
   }
