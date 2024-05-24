@@ -9,6 +9,7 @@ import { AdminService } from 'src/app/service/admin.service';
 export class ZoneComponent implements OnInit {
 
   data:any = [];
+searchText: any;
   constructor(private ad:AdminService) { }
 
   getZones(){

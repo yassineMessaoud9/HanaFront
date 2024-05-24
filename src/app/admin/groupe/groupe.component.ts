@@ -7,6 +7,7 @@ import { AdminService } from 'src/app/service/admin.service';
   styleUrls: ['./groupe.component.css']
 })
 export class GroupeComponent implements OnInit {
+searchText: any;
 
   constructor(private ss:AdminService) { }
 

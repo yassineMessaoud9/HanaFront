@@ -1,6 +1,8 @@
 <div class="container mt-4">
     <h2>Group List</h2>
     <a class="btn btn-primary m-3" href="/admin/addzones">Add Zone</a>
+    <input type="text" class="form-control mb-2" placeholder="Search" [(ngModel)]="searchText">
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -13,7 +15,7 @@
         </thead>
         <tbody>
             <!-- Example Row -->
-            <tr *ngFor="let i of data">
+            <tr *ngFor="let i of data  |filter:searchText">
                 <td>{{ i.name }}</td>
                 <td>{{ i.numposition }}</td>
                 <td><img src="{{ i.pathQr }}"></td>

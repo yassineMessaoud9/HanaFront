@@ -9,6 +9,7 @@ import { EditgroupeComponent } from './groupe/editgroupe/editgroupe.component';
 import { ZoneComponent } from './zone/zone.component';
 import { AddzoneComponent } from './zone/addzone/addzone.component';
 import { UpdatezoneComponent } from './zone/updatezone/updatezone.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { UpdatezoneComponent } from './zone/updatezone/updatezone.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule,FormsModule
+    AdminRoutingModule,FormsModule,Ng2SearchPipeModule
   ]
 })
 export class AdminModule { }
