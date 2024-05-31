@@ -49,4 +49,27 @@ export class AdminService {
   }
 
 
+  getListUsers(){
+    return this.http.get('http://localhost:3005/user')
+  }
+
+  addUsers(body:any){
+    return this.http.post('http://localhost:3005/user/register',body)
+  }
+
+  getUserById(id:any){
+    return this.http.get('http://localhost:3005/user/'+id)
+  }
+
+  updateUser(id:any,body:any){
+    return this.http.put('http://localhost:3005/user/update/'+id,body)
+  }
+  regeneratePassword(id:any){
+    return this.http.get('http://localhost:3005/user/regenerate-password/'+id)
+  }
+
+  deleteUsers(id:any){
+    return this.http.delete('http://localhost:3005/user/'+id)
+  }
+
 }

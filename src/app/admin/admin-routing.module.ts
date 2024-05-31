@@ -7,6 +7,10 @@ import { EditgroupeComponent } from './groupe/editgroupe/editgroupe.component';
 import { AddzoneComponent } from './zone/addzone/addzone.component';
 import { ZoneComponent } from './zone/zone.component';
 import { UpdatezoneComponent } from './zone/updatezone/updatezone.component';
+import { ScannerComponent } from './scanner/scanner.component';
+import { AddusersComponent } from './addusers/addusers.component';
+import { ListusersComponent } from './listusers/listusers.component';
+import { UpdateusersComponent } from './addusers/updateusers/updateusers.component';
 
 const routes: Routes = [
   {
@@ -35,6 +39,22 @@ const routes: Routes = [
     },{
       path:'zones/:id',
       component:UpdatezoneComponent
+    },
+    {
+      path:'scanners',
+      component:ScannerComponent
+    },
+    {
+      path:'users',
+      component:ListusersComponent
+    },
+    {
+      path:'addusers',
+      component:AddusersComponent
+    },
+    {
+      path:'users/:id',
+      component:UpdateusersComponent
     }
   ]
   }

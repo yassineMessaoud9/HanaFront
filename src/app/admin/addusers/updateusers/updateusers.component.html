@@ -1,0 +1,45 @@
+<h3 class="text-center mt-5 text-italic">Update User</h3>
+<div class="card shadow container p-3 mt-5">
+  <form (ngSubmit)="updateUser()" #userForm="ngForm" novalidate>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username:</label>
+      <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" required #username="ngModel">
+      <div *ngIf="username.invalid && username.touched" class="text-danger">
+        <div *ngIf="username.errors?.['required']">Username is required.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required email #email="ngModel">
+      <div *ngIf="email.invalid && email.touched" class="text-danger">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['email']">Please enter a valid email.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone:</label>
+      <input type="tel" class="form-control" id="phone" name="phone" [(ngModel)]="user.phone" required pattern="^[0-9]{8}$" #phone="ngModel">
+      <div *ngIf="phone.invalid && phone.touched" class="text-danger">
+        <div *ngIf="phone.errors?.['required']">Phone is required.</div>
+        <div *ngIf="phone.errors?.['pattern']">Phone must be a 10-digit number.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="role" class="form-label">Role:</label>
+      <select class="form-control" [(ngModel)]="user.role" name="role" required #role="ngModel">
+        <option value="" disabled>Select Role</option>
+        <option value="SUPERVISEUR">Superviseur</option>
+        <option value="LIVREUR">Livreur</option>
+        <option value="OUVRIER">Ouvrier</option>
+      </select>
+      <div *ngIf="role.invalid && role.touched" class="text-danger">
+        <div *ngIf="role.errors?.['required']">Role is required.</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Update</button>
+    <button type="button" class="btn btn-danger m-3" (click)="regeneratePassword()">Regenerate password</button>
+    <div *ngIf="testing==true" class="alert alert-success">
+        Password regenerated successfully.
+    </div>
+  </form>
+</div>

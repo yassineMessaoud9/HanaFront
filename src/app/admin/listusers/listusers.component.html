@@ -1,0 +1,35 @@
+<div class="container mt-4">
+    <h2 class="mb-3">Users List</h2>
+    <a class="btn btn-primary mb-3" href="/admin/addusers">Add users</a>
+    <input type="text" class="form-control mb-3" placeholder="Search" [(ngModel)]="searchText">
+
+    <!-- Buttons for filtering -->
+    <button class="btn btn-secondary mb-3" (click)="filterByRole('SUPERVISEUR')">Superviseur</button>
+    <button class="btn btn-secondary mb-3" (click)="filterByRole('LIVREUR')">Livreur</button>
+    <button class="btn btn-secondary mb-3" (click)="filterByRole('OUVRIER')">Ouvrier</button>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of filteredData   |filter:searchText">
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>
+                        <button class="btn btn-primary m-1" [routerLink]="['/admin', 'users', user._id]">Edit</button>
+                        <button *ngIf=" user.role!='ADMIN'" class="btn btn-danger m-1" (click)="deleteuser(user._id)" >Delete</button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

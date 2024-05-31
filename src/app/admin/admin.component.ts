@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
+  showSidebar: boolean = true;
 
+  toggleSidebar(): void {
+    this.showSidebar = !this.showSidebar;
+  }
 }
