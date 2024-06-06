@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let scanner of scanner">
+                <tr *ngFor="let scanner of scanner |filter:scanData">
                     <td>{{ scanner.reference }}</td>
                     <td>{{ scanner.user.username }}</td>
                     <td>{{ scanner.groupe.name}}</td>

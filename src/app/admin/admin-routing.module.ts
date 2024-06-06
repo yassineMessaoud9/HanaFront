@@ -13,6 +13,9 @@ import { ListusersComponent } from './listusers/listusers.component';
 import { UpdateusersComponent } from './addusers/updateusers/updateusers.component';
 import { AddscannerComponent } from './scanner/addscanner/addscanner.component';
 import { UpdateScannerComponent } from './scanner/update-scanner/update-scanner.component';
+import { BobineComponent } from './bobine/bobine.component';
+import { AddbobineComponent } from './bobine/addbobine/addbobine.component';
+import { UpdateBobineComponent } from './bobine/update-bobine/update-bobine.component';
 
 const routes: Routes = [
   {
@@ -65,6 +68,18 @@ const routes: Routes = [
     {
       path:'addScanner',
       component:AddscannerComponent
+    },
+    {
+      path:'bobines',
+    component:BobineComponent
+    },
+    {
+      path:'addbobine',
+      component:AddbobineComponent
+    },
+    {
+      path:'bobines/:id',
+      component:UpdateBobineComponent
     }
   ]
   }

@@ -101,4 +101,23 @@ export class AdminService {
   updateScanner(id:any,body:any){
     return this.http.put('http://localhost:3005/scanner/'+id,body)
   }
+
+  ///////// BOBINE ///////
+
+  addbobine(body:any){
+    return this.http.post('http://localhost:3005/bobine',body)
+  }
+  getBobines(){
+    return this.http.get('http://localhost:3005/bobine')
+  }
+  getBobineById(id:any){
+    return this.http.get('http://localhost:3005/bobine/'+id)
+  }
+
+  updateBobine(id:any,body:any){
+    return this.http.put('http://localhost:3005/bobine/'+id,body)
+  }
+  deleteBobine(id:any){
+    return this.http.delete('http://localhost:3005/bobine/'+id)
+  }
 }

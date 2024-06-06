@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <h2 class="mb-3">Bobine</h2>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Scan code here" [(ngModel)]="scanData">
+    </div>
+    <!-- Buttons for additional functionalities -->
+    <a class="btn btn-primary m-3" href="/admin/addBobine">Add Bobine</a>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Emplacement</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Section</th>
+                    <th>Couleur</th>
+                    <th>User</th>
+                    <th>Machine</th>
+                    <th>Qr</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bobine of data |filter:scanData">
+                    <td>{{ bobine.emplacement }}</td>
+                    <td>{{ bobine.status }}</td>
+                    <td>{{ bobine.type }}</td>
+                    <td>{{ bobine.section }}</td>
+                    <td>{{ bobine.couleur }}</td>
+                    <td>{{ bobine.user.username }}</td>
+                    <td>{{ bobine.machine.reference }}</td>
+                    <td><img src="{{ bobine.qrCode }}"> <br>  <a href="{{ bobine.qrCode }}" download="{{ bobine.emplacement}}-QR.png" class="btn btn-outline-success m-2">Download</a>
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteBobine(bobine._id)">Delete</button>
+                        <button class="btn btn-warning" [routerLink]="['/admin', 'bobines', bobine._id]">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
