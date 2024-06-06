@@ -11,6 +11,8 @@ import { ScannerComponent } from './scanner/scanner.component';
 import { AddusersComponent } from './addusers/addusers.component';
 import { ListusersComponent } from './listusers/listusers.component';
 import { UpdateusersComponent } from './addusers/updateusers/updateusers.component';
+import { AddscannerComponent } from './scanner/addscanner/addscanner.component';
+import { UpdateScannerComponent } from './scanner/update-scanner/update-scanner.component';
 
 const routes: Routes = [
   {
@@ -45,6 +47,10 @@ const routes: Routes = [
       component:ScannerComponent
     },
     {
+      path:'scanners/:id',
+      component:UpdateScannerComponent
+    },
+    {
       path:'users',
       component:ListusersComponent
     },
@@ -55,6 +61,10 @@ const routes: Routes = [
     {
       path:'users/:id',
       component:UpdateusersComponent
+    },
+    {
+      path:'addScanner',
+      component:AddscannerComponent
     }
   ]
   }

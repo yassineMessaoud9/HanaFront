@@ -14,6 +14,8 @@ import { ScannerComponent } from './scanner/scanner.component';
 import { AddusersComponent } from './addusers/addusers.component';
 import { ListusersComponent } from './listusers/listusers.component';
 import { UpdateusersComponent } from './addusers/updateusers/updateusers.component';
+import { AddscannerComponent } from './scanner/addscanner/addscanner.component';
+import { UpdateScannerComponent } from './scanner/update-scanner/update-scanner.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { UpdateusersComponent } from './addusers/updateusers/updateusers.compone
     AddusersComponent,
     ListusersComponent,
     UpdateusersComponent,
+    AddscannerComponent,
+    UpdateScannerComponent,
   ],
   imports: [
     CommonModule,

@@ -18,7 +18,7 @@ constructor(private as:AdminService, private router:Router) { }
   addZone() {
     let body = {
       "name": this.name,
-      "numposition": this.numeroP
+      "numPosition": this.numeroP
     }
     console.log(body);
     this.as.createZone(body).subscribe(ers=>{

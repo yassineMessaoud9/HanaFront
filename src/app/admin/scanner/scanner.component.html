@@ -1,1 +1,46 @@
-<p>scanner works!</p>
+<div class="container mt-4">
+    <h2 class="mb-3">Scanner</h2>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Scan code here" [(ngModel)]="scanData">
+    </div>
+    <!-- Buttons for additional functionalities -->
+    <a class="btn btn-primary m-3" href="/admin/addScanner">Add Scanner</a>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Reference</th>
+                    <th>User ID</th>
+                    <th>Groupe</th>
+                    <th>Number</th>
+                    <th>MAC Address</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>QR Code (Reserved)</th>
+                    <th>QR Code (Return)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let scanner of scanner">
+                    <td>{{ scanner.reference }}</td>
+                    <td>{{ scanner.user.username }}</td>
+                    <td>{{ scanner.groupe.name}}</td>
+
+                    <td>{{ scanner.number }}</td>
+                    <td>{{ scanner.adresseMac }}</td>
+                    <td>{{ scanner.from }}</td>
+                    <td>{{ scanner.to }}</td>
+                    <td><img src="{{ scanner.qrCodeReserved }}"> <br>  <a href="{{ scanner.qrCodeReserved }}" download="{{ scanner.reference}}-QR.png" class="btn btn-outline-success m-2">Download</a>
+                    </td>
+                    <td><img src="{{ scanner.qrCodeReturn }}" ><br>  <a href="{{ scanner.qrCodeReturn }}" download="{{ scanner.reference}}-QR.png" class="btn btn-outline-success m-2">Download</a></td>
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteScanner(scanner.id)">Delete</button>
+                        <button class="btn btn-warning" [routerLink]="['/admin', 'scanners', scanner._id]">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        
+        </table>
+</div>

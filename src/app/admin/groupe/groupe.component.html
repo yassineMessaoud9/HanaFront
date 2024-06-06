@@ -20,7 +20,7 @@
                 <tr *ngFor="let group of listGroup | filter:searchText">
                     <td>{{ group.name }}</td>
                     <td>{{ group.numero }}</td>
-                    <td>{{ group.zoneNames }}</td>
+                    <td><p *ngFor="let i of group.zones">{{i.name}}</p></td>
                     <td>
                         <img [src]="group.qrPhoto" alt="QR Image" style="width: 100px; height: 100px;">
                     </td>

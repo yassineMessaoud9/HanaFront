@@ -17,7 +17,7 @@
             <!-- Example Row -->
             <tr *ngFor="let i of data  |filter:searchText">
                 <td>{{ i.name }}</td>
-                <td>{{ i.numposition }}</td>
+                <td>{{ i.numPosition }}</td>
                 <td><img src="{{ i.pathQr }}"></td>
                 <td>
                     <button class="btn btn-primary m-2" [routerLink]="['/admin', 'zones', i._id]">Edit</button>

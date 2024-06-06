@@ -8,68 +8,97 @@ export class AdminService {
   constructor(private http:HttpClient) { }
 
   getGroups(){
-    return this.http.get('https://hanaback.onrender.com/groupe')
+    return this.http.get('http://localhost:3005/groupe')
   }
   //add groute
   addGroup(body:any){
-    return this.http.post('https://hanaback.onrender.com/groupe',body)
+    return this.http.post('http://localhost:3005/groupe',body)
   }
 
   getGroupbyId(id: any) {
-    return this.http.get('https://hanaback.onrender.com/groupe/'+id)
+    return this.http.get('http://localhost:3005/groupe/'+id)
   }
 
   updateGroup(id:any,body:any){
-    return this.http.put('https://hanaback.onrender.com/groupe/'+id,body)
+    return this.http.put('http://localhost:3005/groupe/'+id,body)
   }
 
   deleteGroup(id:any){
-    return this.http.delete('https://hanaback.onrender.com/groupe/'+id)
+    return this.http.delete('http://localhost:3005/groupe/'+id)
   }
 
   ////// Zone ///////
   createZone(body:any){
-    return this.http.post('https://hanaback.onrender.com/zone',body)
+    return this.http.post('http://localhost:3005/zone',body)
   }
 
   getZones(){
-    return this.http.get('https://hanaback.onrender.com/zone')
+    return this.http.get('http://localhost:3005/zone')
   }
 
   deleteZone(id:any){
-    return this.http.delete('https://hanaback.onrender.com/zone/'+id)
+    return this.http.delete('http://localhost:3005/zone/'+id)
   }
 
   updateZone(id:any,body:any){
-    return this.http.put('https://hanaback.onrender.com/zone/'+id,body)
+    return this.http.put('http://localhost:3005/zone/'+id,body)
   }
 
   getZoneById(id:any){
-    return this.http.get('https://hanaback.onrender.com/zone/'+id)
+    return this.http.get('http://localhost:3005/zone/'+id)
   }
 
 
   getListUsers(){
-    return this.http.get('https://hanaback.onrender.com/user')
+    return this.http.get('http://localhost:3005/user')
   }
 
   addUsers(body:any){
-    return this.http.post('https://hanaback.onrender.com/user/register',body)
+    return this.http.post('http://localhost:3005/user/register',body)
   }
 
   getUserById(id:any){
-    return this.http.get('https://hanaback.onrender.com/user/'+id)
+    return this.http.get('http://localhost:3005/user/'+id)
   }
 
   updateUser(id:any,body:any){
-    return this.http.put('https://hanaback.onrender.com/user/update/'+id,body)
+    return this.http.put('http://localhost:3005/user/update/'+id,body)
   }
   regeneratePassword(id:any){
-    return this.http.get('https://hanaback.onrender.com/user/regenerate-password/'+id)
+    return this.http.get('http://localhost:3005/user/regenerate-password/'+id)
   }
 
   deleteUsers(id:any){
-    return this.http.delete('https://hanaback.onrender.com/user/'+id)
+    return this.http.delete('http://localhost:3005/user/'+id)
   }
 
+
+  getScanners(){
+    return this.http.get('http://localhost:3005/scanner')
+  }
+
+  addScanner(body:any){
+    return this.http.post('http://localhost:3005/scanner',body)
+  }
+
+  //get scanner by iduser
+  getScannerByIduser(id:any){
+    return this.http.get('http://localhost:3005/scanner/userid/'+id)
+  }
+
+  associateScannerToUser(body:any){
+    return this.http.put('http://localhost:3005/scanner/associate',body)
+  }
+
+  deleteScanner(id:any){
+    return this.http.delete('http://localhost:3005/scanner/'+id)
+  }
+
+  getScannerbyid(id:any){
+    return this.http.get('http://localhost:3005/scanner/'+id)
+  }
+
+  updateScanner(id:any,body:any){
+    return this.http.put('http://localhost:3005/scanner/'+id,body)
+  }
 }
