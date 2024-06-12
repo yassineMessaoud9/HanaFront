@@ -11,9 +11,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Number</th>
                     <th scope="col">Zone</th>
-                    <th scope="col">QR Image</th>
                     <th scope="col">Action</th>
-                    <th scope="col">Download QR</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,16 +19,12 @@
                     <td>{{ group.name }}</td>
                     <td>{{ group.numero }}</td>
                     <td><p *ngFor="let i of group.zones">{{i.name}}</p></td>
-                    <td>
-                        <img [src]="group.qrPhoto" alt="QR Image" style="width: 100px; height: 100px;">
-                    </td>
+                   
                     <td>
                         <button class="btn btn-primary m-1" [routerLink]="['/admin', 'groups', group._id]">Edit</button>
                         <button class="btn btn-danger m-1" (click)="deleteGroup(group._id)">Delete</button>
                     </td>
-                    <td>
-                        <a [href]="group.qrPhoto" [download]="group.name + '-QR.png'" class="btn btn-success m-1">Download</a>
-                    </td>
+                  
                 </tr>
             </tbody>
         </table>

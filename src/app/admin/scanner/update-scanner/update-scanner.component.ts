@@ -9,22 +9,20 @@ import { AdminService } from 'src/app/service/admin.service';
 })
 export class UpdateScannerComponent implements OnInit {
   appareil = {
+    name: '',
     reference: '',
-    number: '',
-    adresseMac: '',
+    adressMac: '',
     from: '',
     to: '',
     user: '',
-    groupe: ''
   };
-
   users: any = [];
   newUsers: any = [];
   gr: any = [];
   id: any;
   scanner: any = [];
 
-  constructor(private router: ActivatedRoute, private ads: AdminService, private route:Router) {
+  constructor(private router: ActivatedRoute, private ads: AdminService, private route: Router) {
     this.id = this.router.snapshot.params['id'];
   }
 
@@ -38,13 +36,12 @@ export class UpdateScannerComponent implements OnInit {
     this.ads.getScannerbyid(this.id).subscribe((res) => {
       console.log(res);
       this.scanner = res;
+      this.appareil.name = this.scanner.name;
       this.appareil.reference = this.scanner.reference;
-      this.appareil.number = this.scanner.number;
-      this.appareil.adresseMac = this.scanner.adresseMac;
+      this.appareil.adressMac = this.scanner.adressMac;
       this.appareil.from = this.formatDate(this.scanner.from);
       this.appareil.to = this.formatDate(this.scanner.to);
       this.appareil.user = this.scanner.user;
-      this.appareil.groupe = this.scanner.groupe;
     });
   }
 
@@ -54,6 +51,7 @@ export class UpdateScannerComponent implements OnInit {
 
   getUsers() {
     this.ads.getListUsers().subscribe((res) => {
+      console.log(res);
       this.users = res;
       this.newUsers = this.users.filter((user: { role: string; }) => user.role === 'LIVREUR' || user.role === 'OPERATEUR');
     });
@@ -61,6 +59,7 @@ export class UpdateScannerComponent implements OnInit {
 
   getGroupes() {
     this.ads.getGroups().subscribe((res) => {
+      console.log(res);
       this.gr = res;
     });
   }
@@ -68,8 +67,10 @@ export class UpdateScannerComponent implements OnInit {
   updateScanners() {
     this.ads.updateScanner(this.id, this.appareil).subscribe((res) => {
       console.log(res);
-
       this.route.navigate(['/admin/scanners']);
+    }, (err) => {
+      console.error(err);
+      alert('Error updating scanner: ' + err.message);
     });
     console.log("Updated data:", this.appareil);
   }

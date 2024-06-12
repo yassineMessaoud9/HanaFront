@@ -1,0 +1,49 @@
+<div class="container mt-4">
+    <h2 class="mb-3">Appareil</h2>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search appareil"
+        [(ngModel)]="searchQuery"
+      />
+    </div>
+    <!-- Buttons for additional functionalities -->
+    <a class="btn btn-primary m-3" href="/admin/addAppareil">Add Appareil</a>
+  
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Group Name</th>
+            <th>Number</th>
+            <th>QR Code Reserved</th>
+            <th>QR Code Return</th>
+            <th>QR Code</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appareil of machine | filter : searchQuery">
+            <td>{{ appareil.groupe.name }}</td>
+            <td>{{ appareil.num }}</td>
+            <td><img [src]="appareil.qrCodeReserved" alt="QR Code Reserved" /></td>
+            <td><img [src]="appareil.qrCodeReturn" alt="QR Code Return" /></td>
+            <td><img [src]="appareil.qrCode" alt="QR Code" /></td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteAppareil(appareil._id)">
+                Delete
+              </button>
+              <button
+                class="btn btn-warning"
+                [routerLink]="['/admin', 'appareils', appareil._id]"
+              >
+                Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

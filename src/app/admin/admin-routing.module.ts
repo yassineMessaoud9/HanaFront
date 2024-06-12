@@ -16,6 +16,10 @@ import { UpdateScannerComponent } from './scanner/update-scanner/update-scanner.
 import { BobineComponent } from './bobine/bobine.component';
 import { AddbobineComponent } from './bobine/addbobine/addbobine.component';
 import { UpdateBobineComponent } from './bobine/update-bobine/update-bobine.component';
+import { MachineComponent } from './machine/machine.component';
+import { AddMachineComponent } from './add-machine/add-machine.component';
+import { UpdateMachineComponent } from './update-machine/update-machine.component';
+import { LivreurComponent } from './livreur/livreur.component';
 
 const routes: Routes = [
   {
@@ -80,6 +84,22 @@ const routes: Routes = [
     {
       path:'bobines/:id',
       component:UpdateBobineComponent
+    },
+    {
+      path:'Machines',
+      component:MachineComponent
+    },
+    {
+      path:'AddMachine',
+      component:AddMachineComponent
+    },
+    {
+      path:'Machines/:id',
+      component:UpdateMachineComponent
+    },
+    {
+      path:'Livreurs',
+      component:LivreurComponent
     }
   ]
   }

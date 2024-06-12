@@ -120,4 +120,15 @@ export class AdminService {
   deleteBobine(id:any){
     return this.http.delete('http://localhost:3005/bobine/'+id)
   }
+
+
+
+  ////// APPAREIL //////
+
+  createAppareil(body:any){
+    return this.http.post('http://localhost:3005/appareil',body)
+  }
+  getAppareil(){
+    return this.http.get('http://localhost:3005/appareil')
+  }
 }

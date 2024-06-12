@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
@@ -7,57 +7,49 @@ import { AdminService } from 'src/app/service/admin.service';
   templateUrl: './addscanner.component.html',
   styleUrls: ['./addscanner.component.css']
 })
-export class AddscannerComponent {
+export class AddscannerComponent implements OnInit {
   appareil = {
+    name: '',
     reference: '',
-    number: '',
-    adresseMac: '',
+    adressMac: '',
     from: '',
     to: '',
-    user: '', // Assuming user is an ID string
-    groupe: '' // Assuming groupe is an ID string
+    user: '',
   };
   users: any = [];
   newUsers: any = [];
   gr: any = [];
-constructor(private ad:AdminService, private router:Router) { }
 
-getUsers() {
-    // Implement the function to get users
+  constructor(private ad: AdminService, private router: Router) { }
+
+  getUsers() {
     this.ad.getListUsers().subscribe((res) => {
       console.log(res);
       this.users = res;
-      //loop the this.users to make this.newUsers take the roles livreur or operateur
-      for(let i=0; i<this.users.length; i++){
-        if(this.users[i].role == 'LIVREUR' || this.users[i].role == 'OPERATEUR'){
-          this.newUsers.push(this.users[i]);
-        }
-      }
-    
+      this.newUsers = this.users.filter((user: { role: string; }) => user.role === 'LIVREUR' || user.role === 'OPERATEUR');
     });
-  
-}
+  }
 
-getGroupes() {
-    // Implement the function to get groupes
+  getGroupes() {
     this.ad.getGroups().subscribe((res) => {
       console.log(res);
       this.gr = res;
     });
-  
-}
+  }
+
   createScanner() {
-    // Implement the function to handle form submission
+    console.log(this.appareil);
     this.ad.addScanner(this.appareil).subscribe((res) => {
       console.log(res);
-    });
-    console.log(this.appareil);
     this.router.navigate(['/admin/scanners']);
-
+    }, (err) => {
+      console.error(err);
+      alert('Error creating scanner: ' + err.message);
+    });
   }
 
   ngOnInit(): void {
     this.getUsers();
-    this.getGroupes();  
+    this.getGroupes();
   }
 }

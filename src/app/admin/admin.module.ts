@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { GroupeComponent } from './groupe/groupe.component';
 import { AddgroupComponent } from './groupe/addgroup/addgroup.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditgroupeComponent } from './groupe/editgroupe/editgroupe.component';
 import { ZoneComponent } from './zone/zone.component';
 import { AddzoneComponent } from './zone/addzone/addzone.component';
@@ -19,6 +19,10 @@ import { UpdateScannerComponent } from './scanner/update-scanner/update-scanner.
 import { BobineComponent } from './bobine/bobine.component';
 import { AddbobineComponent } from './bobine/addbobine/addbobine.component';
 import { UpdateBobineComponent } from './bobine/update-bobine/update-bobine.component';
+import { MachineComponent } from './machine/machine.component';
+import { AddMachineComponent } from './add-machine/add-machine.component';
+import { UpdateMachineComponent } from './update-machine/update-machine.component';
+import { LivreurComponent } from './livreur/livreur.component';
 
 
 @NgModule({
@@ -38,10 +42,14 @@ import { UpdateBobineComponent } from './bobine/update-bobine/update-bobine.comp
     BobineComponent,
     AddbobineComponent,
     UpdateBobineComponent,
+    MachineComponent,
+    AddMachineComponent,
+    UpdateMachineComponent,
+    LivreurComponent,
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule,FormsModule,Ng2SearchPipeModule
+    AdminRoutingModule,FormsModule,Ng2SearchPipeModule,ReactiveFormsModule
   ]
 })
 export class AdminModule { }

@@ -1,6 +1,25 @@
-<h3 class="text-center mt-5 text-italic">update Scanner</h3>
+<h3 class="text-center mt-5 text-italic">Add Scanner</h3>
 <div class="card shadow container p-3 mt-5">
   <form (ngSubmit)="updateScanners()" class="p-3" #appareilForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        [(ngModel)]="appareil.name"
+        name="name"
+        required
+        #name="ngModel"
+      />
+      <div
+        *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="alert alert-danger"
+      >
+        Name is required.
+      </div>
+    </div>
+
     <div class="form-group">
       <label for="reference">Reference:</label>
       <input
@@ -21,37 +40,18 @@
     </div>
 
     <div class="form-group">
-      <label for="number">Number:</label>
+      <label for="adressMac">MAC Address:</label>
       <input
         type="text"
-        id="number"
+        id="adressMac"
         class="form-control"
-        [(ngModel)]="appareil.number"
-        name="number"
+        [(ngModel)]="appareil.adressMac"
+        name="adressMac"
         required
-        #number="ngModel"
+        #adressMac="ngModel"
       />
       <div
-        *ngIf="number.invalid && (number.dirty || number.touched)"
-        class="alert alert-danger"
-      >
-        Number is required.
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="adresseMac">MAC Address:</label>
-      <input
-        type="text"
-        id="adresseMac"
-        class="form-control"
-        [(ngModel)]="appareil.adresseMac"
-        name="adresseMac"
-        required
-        #adresseMac="ngModel"
-      />
-      <div
-        *ngIf="adresseMac.invalid && (adresseMac.dirty || adresseMac.touched)"
+        *ngIf="adressMac.invalid && (adressMac.dirty || adressMac.touched)"
         class="alert alert-danger"
       >
         MAC Address is required.
@@ -105,34 +105,21 @@
         required
         #user="ngModel"
       >
-        <option *ngFor="let user of newUsers" [ngValue]="user">
+        <option value="" disabled selected>Select User</option>
+        <option *ngFor="let user of newUsers" [ngValue]="user._id">
           {{ user.username }}
         </option>
       </select>
     </div>
 
-    <div class="form-group">
-      <label>Groupes</label>
-      <select
-        class="form-control"
-        [(ngModel)]="appareil.groupe"
-        name="groupe"
-        required
-        #groupe="ngModel"
-      >
-        <option *ngFor="let groupe of gr" [ngValue]="groupe">
-          {{ groupe.name }}
-        </option>
-      </select>
-</div>
-    <!-- Additional form fields for user and groupe might require dropdowns or other suitable inputs, depending on the expected input type and data source -->
+    
 
     <button
       type="submit"
       class="btn btn-primary"
       [disabled]="appareilForm.invalid"
     >
-      update Appareil
+      Update Scanner
     </button>
   </form>
 </div>

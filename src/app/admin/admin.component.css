@@ -1,3 +1,49 @@
-a,p{
-    color: white   !important;
-}
+/* General styles for the sidebar */
+.sidebar {
+    background-color: #f8f9fa; /* Light background color */
+    color: #333; /* Dark text color */
+  }
+  
+  /* Styles for the active sidebar item */
+  .sidebar .nav > li.active > a {
+    background-color: #ff851b; /* Active item background color - Orange */
+    color: #fff; /* Active item text color */
+  }
+  
+  /* Styles for sidebar items */
+  .sidebar .nav > li > a {
+    color: #333; /* Default item text color */
+  }
+  
+  .sidebar .nav > li > a:hover {
+    background-color: #ffcc99; /* Hover background color - Light Orange */
+    color: #333; /* Hover text color */
+  }
+  
+  /* Styles for the logo */
+  .sidebar .logo {
+    padding: 10px 15px;
+    background-color: #fff; /* Logo background color */
+    color: #333; /* Logo text color */
+    border-bottom: 1px solid #dee2e6; /* Border below the logo */
+  }
+  
+  .sidebar .logo .simple-text {
+    color: #ff851b; /* Logo text color - Orange */
+  }
+  
+  /* Adjust logo image size */
+  .sidebar .logo .logo-image-small img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Icon colors */
+  .sidebar .nav i {
+    color: #333; /* Icon color */
+  }
+  
+  .sidebar .nav > li.active > a i {
+    color: #fff; /* Active item icon color */
+  }
+  

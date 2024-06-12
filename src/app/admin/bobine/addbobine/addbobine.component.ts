@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
@@ -7,50 +7,54 @@ import { AdminService } from 'src/app/service/admin.service';
   templateUrl: './addbobine.component.html',
   styleUrls: ['./addbobine.component.css']
 })
-export class AddbobineComponent {
+export class AddbobineComponent implements OnInit {
   bobine = {
+    reference: '',
     emplacement: '',
-    status: '',
+    metrage: '',
     type: '',
     section: '',
     couleur: '',
+    dateModification:'',
     user: '',
     machine: ''
   };
-
+  reference: string = '';
   users: any = [];
   newUsers: any = [];
   machines: any = [];
-  
-  constructor(private ads:AdminService,private route:Router){}
+
+  constructor(private ads: AdminService, private route: Router) {}
+
   addBobine() {
+    this.bobine.reference = this.reference;
     this.ads.addbobine(this.bobine).subscribe((res) => {
       console.log(res);
       this.route.navigate(['/admin/bobines']);
     });
-    }
-    
-    getUsers() {
-      this.ads.getListUsers().subscribe((res) => {
-        console.log(res);
-        this.users = res;
-        for(let i=0; i<this.users.length; i++){
-          if(this.users[i].role == 'LIVREUR' || this.users[i].role == 'OPERATEUR'){
-            this.newUsers.push(this.users[i]);
-          }
-        }
-      });
-    }
+  }
 
-    getMachines() {
-      this.ads.getScanners().subscribe((res) => {
-        console.log(res);
-        this.machines = res;
-      });
-    }
+  getUsers() {
+    this.ads.getListUsers().subscribe((res) => {
+      console.log(res);
+      this.users = res;
+      this.newUsers = this.users.filter((user: { role: string; }) => user.role === 'LIVREUR' || user.role === 'OPERATEUR');
+    });
+  }
 
-    ngOnInit(): void {
-      this.getUsers();
-      this.getMachines();
-    }
+  getMachines() {
+    this.ads.getAppareil().subscribe((res) => {
+      console.log(res);
+      this.machines = res;
+    });
+  }
+
+  updateReference() {
+    this.reference = 'L' + this.bobine.type + this.bobine.section + this.bobine.couleur;
+  }
+
+  ngOnInit(): void {
+    this.getUsers();
+    this.getMachines();
+  }
 }
