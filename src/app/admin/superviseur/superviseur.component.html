@@ -1,0 +1,112 @@
+<div class="container mt-4">
+    <h2>Tableau de bord</h2>
+    <table class="table table-bordered table-responsive">
+        <thead class="table-dark">
+            <tr>
+                <th>Groupe</th>
+                <th>ID Pivoteau</th>
+                <th>Nom Pivoteau</th>
+                <th>Étiquette</th>
+                <th>Nom Bobine</th>
+                <th>Zone d'Information</th>
+                <th>Conformité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>G1</td>
+                <td>PIV001</td>
+                <td>Pivoteau Alpha</td>
+                <td>L0215CXX</td>
+                <td>M4ST (Reserved)</td>
+                <td>EG1</td>
+                <td><span class="badge bg-success">X/V</span></td>
+            </tr>
+            <tr>
+                <td>G2</td>
+                <td>PIV002</td>
+                <td>Pivoteau Beta</td>
+                <td>L0215DXX</td>
+                <td>M4ST (Active)</td>
+                <td>EG2</td>
+                <td><span class="badge bg-warning">V/V</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Status des Bobines</h2>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID Bobine</th>
+                <th>Employé affecté</th>
+                <th>Date</th>
+                <th>Heure dernier Check</th>
+                <th>Groupe (Machine / Réseau)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>L0215CXX</td>
+                <td>Jean Dupont</td>
+                <td>2024-06-12</td>
+                <td>14:30</td>
+                <td>G1</td>
+            </tr>
+            <tr>
+                <td>L0215DXX</td>
+                <td>Marie Curie</td>
+                <td>2024-06-11</td>
+                <td>16:45</td>
+                <td>G2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Histoire des Fiches</h2>
+    <table class="table table-responsive">
+        <thead class="table-info">
+            <tr>
+                <th>No. Fiche</th>
+                <th>Groupe Fiche</th>
+                <th>ID Pivoteau</th>
+                <th>Nouveau / Bobine / Scanne</th>
+                <th>Zone d'Information</th>
+                <th>Conformité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001</td>
+                <td>G1</td>
+                <td>PIV001</td>
+                <td>Nouveau</td>
+                <td>EG1</td>
+                <td><span class="badge bg-danger">X/V</span></td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>G2</td>
+                <td>PIV002</td>
+                <td>Scanne</td>
+                <td>EG2</td>
+                <td><span class="badge bg-success">V/V</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <h3>Liste des Capteurs</h3>
+            <p>Capteur 1: <span class="badge bg-primary">Active</span>, Capteur 2: <span class="badge bg-secondary">Inactive</span></p>
+        </div>
+        <div class="col-md-4">
+            <h3>Gestion des Pivoteaux</h3>
+            <p>Ajouter, Modifier, Supprimer des pivoteaux</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Affectation des Tâches</h3>
+            <p>Tâches assignées à Jean Dupont: <span class="badge bg-info">Supervision G1</span>, Marie Curie: <span class="badge bg-info">Supervision G2</span></p>
+        </div>
+    </div>
+</div>

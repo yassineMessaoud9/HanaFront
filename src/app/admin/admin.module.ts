@@ -23,6 +23,7 @@ import { MachineComponent } from './machine/machine.component';
 import { AddMachineComponent } from './add-machine/add-machine.component';
 import { UpdateMachineComponent } from './update-machine/update-machine.component';
 import { LivreurComponent } from './livreur/livreur.component';
+import { SuperviseurComponent } from './superviseur/superviseur.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { LivreurComponent } from './livreur/livreur.component';
     AddMachineComponent,
     UpdateMachineComponent,
     LivreurComponent,
+    SuperviseurComponent,
   ],
   imports: [
     CommonModule,

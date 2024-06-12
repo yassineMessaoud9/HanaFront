@@ -20,6 +20,7 @@ import { MachineComponent } from './machine/machine.component';
 import { AddMachineComponent } from './add-machine/add-machine.component';
 import { UpdateMachineComponent } from './update-machine/update-machine.component';
 import { LivreurComponent } from './livreur/livreur.component';
+import { SuperviseurComponent } from './superviseur/superviseur.component';
 
 const routes: Routes = [
   {
@@ -100,6 +101,10 @@ const routes: Routes = [
     {
       path:'Livreurs',
       component:LivreurComponent
+    },
+    {
+      path:'Superviseurs',
+      component:SuperviseurComponent
     }
   ]
   }
