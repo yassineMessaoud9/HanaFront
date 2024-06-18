@@ -1,112 +1,199 @@
 <div class="container mt-4">
-    <h2>Tableau de bord</h2>
-    <table class="table table-bordered table-responsive">
-        <thead class="table-dark">
-            <tr>
-                <th>Groupe</th>
-                <th>ID Pivoteau</th>
-                <th>Nom Pivoteau</th>
-                <th>Étiquette</th>
-                <th>Nom Bobine</th>
-                <th>Zone d'Information</th>
-                <th>Conformité</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>G1</td>
-                <td>PIV001</td>
-                <td>Pivoteau Alpha</td>
-                <td>L0215CXX</td>
-                <td>M4ST (Reserved)</td>
-                <td>EG1</td>
-                <td><span class="badge bg-success">X/V</span></td>
-            </tr>
-            <tr>
-                <td>G2</td>
-                <td>PIV002</td>
-                <td>Pivoteau Beta</td>
-                <td>L0215DXX</td>
-                <td>M4ST (Active)</td>
-                <td>EG2</td>
-                <td><span class="badge bg-warning">V/V</span></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="text-center mb-4">
+        <button class="btn btn-primary mx-2" (click)="toggleSection('dashboard')">Tableau de bord</button>
+        <button class="btn btn-primary mx-2" (click)="toggleSection('status')">Status des Bobines</button>
+        <button class="btn btn-primary mx-2" (click)="toggleSection('history')">Historiques des Taches</button>
+        <button class="btn btn-primary mx-2" (click)="toggleSection('alerts')">Liste des alertes</button>
+        <button class="btn btn-primary mx-2" (click)="toggleSection('deliverers')">Gestion des Livreurs</button>
+        <button class="btn btn-primary mx-2" (click)="toggleSection('tasks')">Affectation des Tâches</button>
+    </div>
 
-    <h2>Status des Bobines</h2>
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>ID Bobine</th>
-                <th>Employé affecté</th>
-                <th>Date</th>
-                <th>Heure dernier Check</th>
-                <th>Groupe (Machine / Réseau)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>L0215CXX</td>
-                <td>Jean Dupont</td>
-                <td>2024-06-12</td>
-                <td>14:30</td>
-                <td>G1</td>
-            </tr>
-            <tr>
-                <td>L0215DXX</td>
-                <td>Marie Curie</td>
-                <td>2024-06-11</td>
-                <td>16:45</td>
-                <td>G2</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>Histoire des Fiches</h2>
-    <table class="table table-responsive">
-        <thead class="table-info">
-            <tr>
-                <th>No. Fiche</th>
-                <th>Groupe Fiche</th>
-                <th>ID Pivoteau</th>
-                <th>Nouveau / Bobine / Scanne</th>
-                <th>Zone d'Information</th>
-                <th>Conformité</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>001</td>
-                <td>G1</td>
-                <td>PIV001</td>
-                <td>Nouveau</td>
-                <td>EG1</td>
-                <td><span class="badge bg-danger">X/V</span></td>
-            </tr>
-            <tr>
-                <td>002</td>
-                <td>G2</td>
-                <td>PIV002</td>
-                <td>Scanne</td>
-                <td>EG2</td>
-                <td><span class="badge bg-success">V/V</span></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="row mt-3">
-        <div class="col-md-4">
-            <h3>Liste des Capteurs</h3>
-            <p>Capteur 1: <span class="badge bg-primary">Active</span>, Capteur 2: <span class="badge bg-secondary">Inactive</span></p>
+    <div *ngIf="sections.dashboard">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">Tableau de bord</div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Groupe</th>
+                            <th>ID Livreur</th>
+                            <th>Nom Livreur</th>
+                            <th>Id Bobine</th>
+                            <th>Nom Bobine</th>
+                            <th>Zone retrait</th>
+                            <th>destination</th>
+                            <th>Conformité</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>G1</td>
+                            <td>PIV001</td>
+                            <td>Livreur AlphaZ</td>
+                            <td>234é</td>
+                            <td>M4ST (Reserved)</td>
+                            <td>EG1</td>
+                            <td>L0215CXX</td>
+                            <td><span class="badge bg-success"><i class="fa fa-check"></i></span></td>
+                        </tr>
+                        <tr>
+                            <td>G2</td>
+                            <td>PIV002</td>
+                            <td>Pivoteau Beta</td>
+                            <td>3232</td>
+                            <td>M4ST (Active)</td>
+                            <td>EG2</td>
+                            <td>L0215CXX</td>
+                            <td><span class="badge bg-danger"><i class="fa fa-close"></i></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h3>Gestion des Pivoteaux</h3>
-            <p>Ajouter, Modifier, Supprimer des pivoteaux</p>
+    </div>
+
+    <div *ngIf="sections.status">
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">Status des Bobines</div>
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID Bobine</th>
+                            <th>Bobine</th>
+                            <th>Emplacement actuel</th>
+                            <th>Date</th>
+                            <th>Heure dernier chargement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>L0215CXX</td>
+                            <td>G1</td>
+                            <td>Jean Dupont</td>
+                            <td>2024-06-12</td>
+                            <td>14:30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h3>Affectation des Tâches</h3>
-            <p>Tâches assignées à Jean Dupont: <span class="badge bg-info">Supervision G1</span>, Marie Curie: <span class="badge bg-info">Supervision G2</span></p>
+    </div>
+
+    <div *ngIf="sections.history">
+        <div class="card mb-4">
+            <div class="card-header bg-info text-white">Historiques des Taches</div>
+            <div class="card-body">
+                <table class="table table-responsive table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>No. Tache</th>
+                            <th>Groupe</th>
+                            <th>ID Livreur</th>
+                            <th>Livreur</th>
+                            <th>ID Bobine</th>
+                            <th>Bobine</th>
+                            <th>Zone de retrait</th>
+                            <th>destination</th>
+                            <th>Conformité</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>G1</td>
+                            <td>PIV001</td>
+                            <td>Livreur AlphaZ</td>
+                            <td>L0215CXX</td>
+                            <td>M4ST (Reserved)</td>
+                            <td>EG1</td>
+                            <td>EG1</td>
+                            <td><span class="badge bg-success"><i class="fa fa-check"></i></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="sections.alerts">
+        <div class="card mb-4">
+            <div class="card-header bg-warning text-white">Liste des alertes</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>alertes 1: <span class="badge bg-primary">Active</span>, alertes 2: <span class="badge bg-secondary">Inactive</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="sections.deliverers">
+        <div class="card mb-4">
+            <div class="card-header bg-secondary text-white">Gestion des Livreurs</div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Ajouter</th>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jean Dupont</td>
+                            <td><button class="btn btn-warning btn-sm">Modifier</button></td>
+                            <td><button class="btn btn-danger btn-sm">Supprimer</button></td>
+                        </tr>
+                        <tr>
+                            <td>Marie Curie</td>
+                            <td><button class="btn btn-warning btn-sm">Modifier</button></td>
+                            <td><button class="btn btn-danger btn-sm">Supprimer</button></td>
+                        </tr>
+                        <tr>
+                            <td>Albert Einstein</td>
+                            <td><button class="btn btn-warning btn-sm">Modifier</button></td>
+                            <td><button class="btn btn-danger btn-sm">Supprimer</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="sections.tasks">
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">Affectation des Tâches</div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nom Livreur</th>
+                            <th>Groupe</th>
+                            <th>Tâche</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jean Dupont</td>
+                            <td>G1</td>
+                            <td>Supervision G1</td>
+                        </tr>
+                        <tr>
+                            <td>Marie Curie</td>
+                            <td>G2</td>
+                            <td>Supervision G2</td>
+                        </tr>
+                        <tr>
+                            <td>Albert Einstein</td>
+                            <td>G3</td>
+                            <td>Supervision G3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

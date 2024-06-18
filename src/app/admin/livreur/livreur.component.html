@@ -1,11 +1,9 @@
-
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title
-                    text-center">Hello Livreur</h4>
+                    <h4 class="card-title text-center">Hello Livreur</h4>
                 </div>
                 <div class="card-body">
                     <p class="card-text">Welcome to the Livreur page. Here you can view the properties and history of provisions.</p>
@@ -22,8 +20,8 @@
             <tr>
                 <th>No. de Tache</th>
                 <th>Bobine</th>
-                <th>Zone de travail</th>
-                <th>définition</th>
+                <th>Zone de retrait</th>
+                <th>déstination</th>
                 <th>conformité de scan</th>
             </tr>
         </thead>
@@ -31,43 +29,44 @@
             <tr class="table-success">
                 <td>1</td>
                 <td>L0215CXX</td>
-                <td>EG1</td>
+                <td>ZG1</td>
                 <td>N199 (Reserved)</td>
-                <td>X/V</td>
+                <td><i class="fa fa-times-circle text-danger"></i>  </td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>L0215CXX M4ST (Return)</td>
                 <td>Stock.Return</td>
-                <td>X/V</td>
-                <td>X/V</td>
+                <td>LUH79</td>
+                <td>  <i class="fa fa-check-circle text-success"></i></td>
             </tr>
             <tr class="table-warning">
                 <td>3</td>
                 <td>L0215CXX</td>
                 <td>EG2</td>
                 <td>N200 (Reserved)</td>
-                <td>V/X</td>
+                <td><i class="fa fa-check-circle text-success"></i> </td>
             </tr>
             <tr class="table-info">
                 <td>4</td>
                 <td>L0215CXX M4ST</td>
                 <td>Dispatch</td>
-                <td>V/V</td>
-                <td>X/X</td>
+                <td>LUH79</td>
+                <td><i class="fa fa-times-circle text-danger"></i></td>
             </tr>
             <!-- Add more rows here as needed -->
         </tbody>
     </table>
 
-    <h2>History of Provisions</h2>
+    <h2>Historique des livraisons</h2>
     <table class="table table-striped table-sm">
         <thead>
             <tr>
-                <th>No. de Fache</th>
+                <th>No. de Tache</th>
                 <th>ID Bobine</th>
-                <th>Zone de travail</th>
-                <th>définition</th>
+                <th>Bobine</th>
+                <th>Zone de retrait</th>
+                <th>déstination</th>
                 <th>conformité de scan</th>
             </tr>
         </thead>
@@ -77,14 +76,18 @@
                 <td>L0215CXX</td>
                 <td>EG1</td>
                 <td>N199 (Reserved)</td>
-                <td>X/V</td>
+                <td>LUH79</td>
+
+                <td><i class="fa fa-times-circle text-danger"></i> </td>
             </tr>
             <tr class="table-primary">
                 <td>5</td>
                 <td>L0215CXX M5ST</td>
                 <td>EG2</td>
                 <td>N200 (In use)</td>
-                <td>V/X</td>
+                <td>LUH79</td>
+
+                <td> <i class="fa fa-times-circle text-danger"></i></td>
             </tr>
             <!-- Add more rows here as needed -->
         </tbody>
