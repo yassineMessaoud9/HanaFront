@@ -23,11 +23,21 @@ export class AddbobineComponent implements OnInit {
   users: any = [];
   newUsers: any = [];
   machines: any = [];
+  zones: any = [];
+
 
   constructor(private ads: AdminService, private route: Router) {}
 
+
+  getZones(){
+    this.ads.getZones().subscribe((res) => {
+      console.log(res);
+      this.zones = res;
+    });
+  }
   addBobine() {
     this.bobine.reference = this.reference;
+    console.log(this.bobine);
     this.ads.addbobine(this.bobine).subscribe((res) => {
       console.log(res);
       this.route.navigate(['/admin/bobines']);
@@ -56,5 +66,6 @@ export class AddbobineComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
     this.getMachines();
+    this.getZones();
   }
 }

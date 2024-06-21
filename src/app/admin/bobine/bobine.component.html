@@ -23,7 +23,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let bobine of data |filter:scanData">
-                    <td>{{ bobine.emplacement }}</td>
+                    <td>{{ bobine.emplacement.name }}</td>
                     <td>{{ bobine.status }}</td>
                     <td>{{ bobine.type }}</td>
                     <td>{{ bobine.section }}</td>

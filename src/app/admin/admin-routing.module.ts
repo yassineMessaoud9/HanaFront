@@ -21,6 +21,7 @@ import { AddMachineComponent } from './add-machine/add-machine.component';
 import { UpdateMachineComponent } from './update-machine/update-machine.component';
 import { LivreurComponent } from './livreur/livreur.component';
 import { SuperviseurComponent } from './superviseur/superviseur.component';
+import { ScanqrComponent } from './scanqr/scanqr.component';
 
 const routes: Routes = [
   {
@@ -105,6 +106,10 @@ const routes: Routes = [
     {
       path:'Superviseurs',
       component:SuperviseurComponent
+    },
+    {
+      path:'scanqr',
+      component:ScanqrComponent
     }
   ]
   }
