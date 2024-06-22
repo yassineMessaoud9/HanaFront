@@ -16,80 +16,57 @@
 <div class="container mt-4">
     <h2>Properties of Provisions</h2>
     <table class="table table-bordered table-hover">
-        <thead class="table-dark">
+        <thead class="thead-dark">
             <tr>
-                <th>No. de Tache</th>
-                <th>Bobine</th>
-                <th>Zone de retrait</th>
-                <th>déstination</th>
-                <th>conformité de scan</th>
+                <th>Groupe</th>
+                <th>Email Livreur</th>
+                <th>Nom Livreur</th>
+                <th>Reference Bobine</th>
+                <th>Metrage Bobine</th>
+                <th>Zone retrait</th>
+                <th>Conformité</th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="table-success">
-                <td>1</td>
-                <td>L0215CXX</td>
-                <td>ZG1</td>
-                <td>N199 (Reserved)</td>
-                <td><i class="fa fa-times-circle text-danger"></i>  </td>
+        <tbody *ngIf=" anyScanned()">
+            <tr *ngFor="let i of databobinenv">
+                <td *ngIf="i.scanned==false">{{i.machine.groupe.name}}</td>
+                <td *ngIf="i.scanned==false">{{i.user.email}}</td>
+                <td *ngIf="i.scanned==false">{{i.user.username}}</td>
+                <td *ngIf="i.scanned==false">{{i.reference}}</td>
+                <td *ngIf="i.scanned==false">{{i.metrage}}</td>
+                <td *ngIf="i.scanned==false">{{i.emplacement.name}}</td>
+
+                <td *ngIf="i.scanned==false"><span class="badge bg-danger"><i class="fa fa-times"></i></span></td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>L0215CXX M4ST (Return)</td>
-                <td>Stock.Return</td>
-                <td>LUH79</td>
-                <td>  <i class="fa fa-check-circle text-success"></i></td>
-            </tr>
-            <tr class="table-warning">
-                <td>3</td>
-                <td>L0215CXX</td>
-                <td>EG2</td>
-                <td>N200 (Reserved)</td>
-                <td><i class="fa fa-check-circle text-success"></i> </td>
-            </tr>
-            <tr class="table-info">
-                <td>4</td>
-                <td>L0215CXX M4ST</td>
-                <td>Dispatch</td>
-                <td>LUH79</td>
-                <td><i class="fa fa-times-circle text-danger"></i></td>
-            </tr>
-            <!-- Add more rows here as needed -->
+            
         </tbody>
     </table>
 
     <h2>Historique des livraisons</h2>
     <table class="table table-striped table-sm">
-        <thead>
+        <thead class="thead-dark">
             <tr>
-                <th>No. de Tache</th>
-                <th>ID Bobine</th>
-                <th>Bobine</th>
-                <th>Zone de retrait</th>
-                <th>déstination</th>
-                <th>conformité de scan</th>
+                <th>Groupe</th>
+                <th>Email Livreur</th>
+                <th>Nom Livreur</th>
+                <th>Reference Bobine</th>
+                <th>Metrage Bobine</th>
+                <th>Zone retrait</th>
+                <th>Conformité</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>4</td>
-                <td>L0215CXX</td>
-                <td>EG1</td>
-                <td>N199 (Reserved)</td>
-                <td>LUH79</td>
+            <tr *ngFor="let i of databobinenv" >
+                <td *ngIf="i.scanned==true">{{i.machine.groupe.name}}</td>
+                <td *ngIf="i.scanned==true">{{i.user.email}}</td>
+                <td *ngIf="i.scanned==true">{{i.user.username}}</td>
+                <td *ngIf="i.scanned==true">{{i.reference}}</td>
+                <td *ngIf="i.scanned==true">{{i.metrage}}</td>
+                <td *ngIf="i.scanned==true">{{i.emplacement.name}}</td>
 
-                <td><i class="fa fa-times-circle text-danger"></i> </td>
+                <td *ngIf="i.scanned==true"><span class="badge bg-success"><i class="fa fa-check"></i></span></td>
             </tr>
-            <tr class="table-primary">
-                <td>5</td>
-                <td>L0215CXX M5ST</td>
-                <td>EG2</td>
-                <td>N200 (In use)</td>
-                <td>LUH79</td>
-
-                <td> <i class="fa fa-times-circle text-danger"></i></td>
-            </tr>
-            <!-- Add more rows here as needed -->
+            
         </tbody>
     </table>
 </div>

@@ -51,7 +51,7 @@
       <label for="machine">Machine:</label>
       <select class="form-control" [(ngModel)]="bobine.machine" name="machine" required>
         <option value="" disabled selected>Select Machine</option>
-        <option *ngFor="let machine of machines" [value]="machine._id">{{ machine.reference }}</option>
+        <option *ngFor="let machine of machines" [value]="machine._id">{{ machine.number }}</option>
       </select>
     </div>
 

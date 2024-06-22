@@ -16,36 +16,26 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Groupe</th>
-                            <th>ID Livreur</th>
+                            <th>Email Livreur</th>
                             <th>Nom Livreur</th>
-                            <th>Id Bobine</th>
-                            <th>Nom Bobine</th>
+                            <th>Reference Bobine</th>
+                            <th>Metrage Bobine</th>
                             <th>Zone retrait</th>
-                            <th>destination</th>
                             <th>Conformité</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>G1</td>
-                            <td>PIV001</td>
-                            <td>Livreur AlphaZ</td>
-                            <td>234é</td>
-                            <td>M4ST (Reserved)</td>
-                            <td>EG1</td>
-                            <td>L0215CXX</td>
-                            <td><span class="badge bg-success"><i class="fa fa-check"></i></span></td>
+                    <tbody *ngIf=" !anyScanned()">
+                        <tr *ngFor="let i of databobinenv">
+                            <td>{{i.machine.groupe.name}}</td>
+                            <td>{{i.user.email}}</td>
+                            <td>{{i.user.username}}</td>
+                            <td>{{i.reference}}</td>
+                            <td>{{i.metrage}}</td>
+                            <td>{{i.emplacement.name}}</td>
+
+                            <td *ngIf="i.scanned==false"><span class="badge bg-danger"><i class="fa fa-times"></i></span></td>
                         </tr>
-                        <tr>
-                            <td>G2</td>
-                            <td>PIV002</td>
-                            <td>Pivoteau Beta</td>
-                            <td>3232</td>
-                            <td>M4ST (Active)</td>
-                            <td>EG2</td>
-                            <td>L0215CXX</td>
-                            <td><span class="badge bg-danger"><i class="fa fa-close"></i></span></td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -84,32 +74,30 @@
         <div class="card mb-4">
             <div class="card-header bg-info text-white">Historiques des Taches</div>
             <div class="card-body">
-                <table class="table table-responsive table-hover">
+                <table class="table table-bordered table-responsive table-hover">
                     <thead class="thead-dark">
                         <tr>
-                            <th>No. Tache</th>
                             <th>Groupe</th>
-                            <th>ID Livreur</th>
-                            <th>Livreur</th>
-                            <th>ID Bobine</th>
-                            <th>Bobine</th>
-                            <th>Zone de retrait</th>
-                            <th>destination</th>
+                            <th>Email Livreur</th>
+                            <th>Nom Livreur</th>
+                            <th>Reference Bobine</th>
+                            <th>Metrage Bobine</th>
+                            <th>Zone retrait</th>
                             <th>Conformité</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>G1</td>
-                            <td>PIV001</td>
-                            <td>Livreur AlphaZ</td>
-                            <td>L0215CXX</td>
-                            <td>M4ST (Reserved)</td>
-                            <td>EG1</td>
-                            <td>EG1</td>
-                            <td><span class="badge bg-success"><i class="fa fa-check"></i></span></td>
+                    <tbody *ngIf=" anyScanned()">
+                        <tr *ngFor="let i of databobinenv" >
+                            <td>{{i.machine.groupe.name}}</td>
+                            <td>{{i.user.email}}</td>
+                            <td>{{i.user.username}}</td>
+                            <td>{{i.reference}}</td>
+                            <td>{{i.metrage}}</td>
+                            <td>{{i.emplacement.name}}</td>
+
+                            <td *ngIf="i.scanned==true"><span class="badge bg-success"><i class="fa fa-check"></i></span></td>
                         </tr>
+                        
                     </tbody>
                 </table>
             </div>

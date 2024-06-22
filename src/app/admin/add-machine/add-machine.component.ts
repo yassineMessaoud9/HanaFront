@@ -42,7 +42,7 @@ export class AddMachineComponent {
     this.ads.createAppareil(this.appareilForm.value).subscribe(
       (response: any) => {
         console.log('Appareil created successfully!', response);
-        this.router.navigate(['/appareils']);
+        this.router.navigate(['/admin/Machines']);
       },
       (error:any) => {
         console.error('Error creating appareil', error);

@@ -7,32 +7,37 @@ declare var Instascan: any;
   templateUrl: './scanqr.component.html',
   styleUrls: ['./scanqr.component.css']
 })
-export class ScanqrComponent {
+export class ScanqrComponent implements AfterViewInit, OnDestroy {
   @ViewChild('scanner') scannerElement!: ElementRef<HTMLVideoElement>;
   qrResult: string | null = null;
   scanner: any;
+  camerasAvailable: any[] = [];
 
   ngAfterViewInit(): void {
     this.scanner = new Instascan.Scanner({ video: this.scannerElement.nativeElement });
     this.scanner.addListener('scan', (content: string) => {
       this.qrResult = content;
-      console.log('QR content:', content); // You can handle the result here
+      console.log('QR content:', content); // Handle the result here
     });
 
     Instascan.Camera.getCameras().then((cameras: any[]) => {
-      if (cameras.length > 0) {
-        this.scanner.start(cameras[0]); // Starts the camera scan, use cameras[1] for front cam if necessary
-      } else {
-        console.error('No cameras found.');
-      }
+      this.camerasAvailable = cameras;
     }).catch((e: any) => {
-      console.error('Error initializing camera:', e);
+      console.error('Error initializing cameras:', e);
     });
+  }
+
+  startScanning(): void {
+    if (this.camerasAvailable.length > 0) {
+      this.scanner.start(this.camerasAvailable[0]); // Starts the camera scan
+    } else {
+      console.error('No cameras found.');
+    }
   }
 
   ngOnDestroy(): void {
     if (this.scanner) {
-      this.scanner.stop(); // Important to turn off the camera
+      this.scanner.stop(); // Turn off the camera
     }
   }
 }

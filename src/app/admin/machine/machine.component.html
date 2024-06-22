@@ -9,7 +9,7 @@
       />
     </div>
     <!-- Buttons for additional functionalities -->
-    <a class="btn btn-primary m-3" href="/admin/addAppareil">Add Appareil</a>
+    <a class="btn btn-primary m-3" href="/admin/AddMachine">Add Appareil</a>
   
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
@@ -26,7 +26,7 @@
         <tbody>
           <tr *ngFor="let appareil of machine | filter : searchQuery">
             <td>{{ appareil.groupe.name }}</td>
-            <td>{{ appareil.num }}</td>
+            <td>{{ appareil.number }}</td>
             <td><img [src]="appareil.qrCodeReserved" alt="QR Code Reserved" /></td>
             <td><img [src]="appareil.qrCodeReturn" alt="QR Code Return" /></td>
             <td><img [src]="appareil.qrCode" alt="QR Code" /></td>

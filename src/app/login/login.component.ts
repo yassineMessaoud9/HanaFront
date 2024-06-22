@@ -33,10 +33,10 @@ export class LoginComponent {
         console.log(decodedToken);
 
         localStorage.setItem('user', JSON.stringify(res.user));
-        if (decodedToken.role === 'ADMIN') { 
+      
           sessionStorage.setItem('role', decodedToken.role);
          this.router.navigate(['/admin']);
-        }
+    
       },
       (err: any) => {
         this.testerr = true;

@@ -12,7 +12,7 @@
                 <tr>
                     <th>Emplacement</th>
                     <th>Status</th>
-                    <th>Type</th>
+                    <th>Reference</th>
                     <th>Section</th>
                     <th>Couleur</th>
                     <th>User</th>
@@ -24,12 +24,12 @@
             <tbody>
                 <tr *ngFor="let bobine of data |filter:scanData">
                     <td>{{ bobine.emplacement.name }}</td>
-                    <td>{{ bobine.status }}</td>
+                    <td>{{ bobine.reference }}</td>
                     <td>{{ bobine.type }}</td>
                     <td>{{ bobine.section }}</td>
                     <td>{{ bobine.couleur }}</td>
                     <td>{{ bobine.user.username }}</td>
-                    <td>{{ bobine.machine.reference }}</td>
+                    <td>{{ bobine.machine.number }}</td>
                     <td><img src="{{ bobine.qrCode }}"> <br>  <a href="{{ bobine.qrCode }}" download="{{ bobine.emplacement}}-QR.png" class="btn btn-outline-success m-2">Download</a>
                     <td>
                         <button class="btn btn-danger" (click)="deleteBobine(bobine._id)">Delete</button>

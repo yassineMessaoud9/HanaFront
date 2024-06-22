@@ -37,6 +37,6 @@ data: any=[];
   }
 
   ngOnInit(): void {
-    this.getBobines();
+    this.getBobines()
   }
 }

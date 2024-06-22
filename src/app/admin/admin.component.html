@@ -16,44 +16,59 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
+        <li *ngIf="role === 'ADMIN'" class="nav-item">
             <a class="nav-link"routerLink="/admin/groups">
               <p> <i class="fa fa-object-group"></i>
              Groups</p></a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="role === 'ADMIN'"  class="nav-item">
           <a class="nav-link"routerLink="/admin/zones">
            <p> <i class="fa fa-map-marker"></i>
             Zones</p>
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="role === 'ADMIN'" class="nav-item">
           <a class="nav-link" routerLink="/admin/scanners">
            <p>  <i class="fa fa-qrcode"></i>
            Scanners</p>
           </a>
         </li>
-      <li class="nav-item">
+      <li *ngIf="role === 'ADMIN'" class="nav-item">
         <a class="nav-link"routerLink="/admin/users">
          <p> <i class="fa fa-users"></i>
           Users</p>
         </a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="role === 'ADMIN'" class="nav-item">
         <a class="nav-link"routerLink="/admin/bobines">
          <p> <i class="fa fa-battery-full"></i>
           Bobines</p>
         </a>
       </li>
-    <li class="nav-item">
-      <a class="nav-link"routerLink="/admin/machines">
+    <li *ngIf="role === 'ADMIN'" class="nav-item">
+      <a class="nav-link"routerLink="/admin/Machines">
        <p> <i class="fa fa-cog"></i>
         Machines</p>
       </a>
-    </li>
-      
-
+      <li *ngIf="role === 'SUPERVISEUR'" class="nav-item">
+        <a class="nav-link" routerLink="/admin/Superviseurs">
+          <p><i class="fa fa-users"></i> Superviseurs</p>
+        </a>
+      </li>
+    
+      <!-- Livreur Item, displayed only if role is LIVREUR -->
+      <li *ngIf="role === 'LIVREUR'" class="nav-item">
+        <a class="nav-link" routerLink="/admin/Livreurs">
+          <p><i class="fa fa-users"></i> Livreur</p>
+        </a>
+      </li>
+      <li  class="nav-item">
+        <a class="nav-link" (click)="logout()">
+          <p><i class="fa fa-lock"></i> Logout</p>
+        </a>
+      </li>
     </ul>
+    
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -269,6 +284,11 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
+            <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="att==true">
+                There are changes in bobine data! <a routerLink="/admin/bobines"><b>Show !</b> </a>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+            </div>
                 <!-- Page Heading -->
                <router-outlet></router-outlet>
 

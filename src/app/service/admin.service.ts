@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of, throwError } from 'rxjs';
+import { catchError, retryWhen, delay, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -132,3 +134,7 @@ export class AdminService {
     return this.http.get('http://localhost:3005/appareil')
   }
 }
+function distinctUntilChanged(arg0: (prev: any, curr: any) => boolean): import("rxjs").OperatorFunction<Object, unknown> {
+  throw new Error('Function not implemented.');
+}
+

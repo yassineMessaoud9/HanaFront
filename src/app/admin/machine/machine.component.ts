@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
@@ -14,12 +15,13 @@ throw new Error('Method not implemented.');
   machine: any = [];
 searchQuery!: string;
 
-  constructor( private ads:AdminService) { }
+  constructor( private ads:AdminService , private router:Router) { }
 
   getMachines() {
     this.ads.getAppareil().subscribe((res) => {
       console.log(res);
       this.machine = res;
+      //
     });
   }
 
